@@ -17,17 +17,17 @@ print('  /!\ All data will be erased /!\\\n')
 input(' Press any key to detect device..\n')
 
 
-os.system('./adb devices')
+os.system('adb devices')
 
 OEM = int(input('Type OEM code :'))
 input('Press any key to reboot your device..\n')
-os.system('./adb reboot bootloader')
+os.system('adb reboot bootloader')
 input('Press any key when your device is ready..\n')
 
-os.system('./fastboot oem relock '+OEM)
+os.system('fastboot oem relock '+OEM)
 
-os.system('./fastboot getvar unlocked')
-os.system('./fastboot reboot')
+os.system('fastboot getvar unlocked')
+os.system('fastboot reboot')
 
 print('\n\nDevice locked succesfully !')
 input('Press any key to exit..\n')
