@@ -1,4 +1,4 @@
-# huawei-honor-unlock-bootloader
+# huawei-honor-unlock-bootloader-linux
 
 ## Summary
 
@@ -11,14 +11,8 @@ It uses a bruteforce method, based on the IMEI identifier to generate unlocking 
 This will most likely only work on European versions, 
 because these only use numbers in the bootloader unlock code.
 
-I've only had the opportunity to test it on European versions:
-- Honor  5x 8x and 9x
-- Honor  view 10 and 20
-- Honor  10 lite
-- Huawei p20 lite
-- Huawei Y6 2019
-- Huawei p30
-
+Currently is in testing on the device (Russian region)
+- Honor 7A DUA-L22
 
 ## Instructions
 
@@ -26,10 +20,7 @@ I've only had the opportunity to test it on European versions:
 1. Enable USB debugging in Android.
 1. Connect your device to the computer and launch the script.
 
-    Windows:
-    ```batch
-    C:\WINDOWS\system32> python unlock.py
-    ```
+
     Linux:
     ```shell
     $ python3 unlock.py
@@ -48,9 +39,6 @@ I've only had the opportunity to test it on European versions:
 
 **- The application doesn't work. Is there anything I should have installed?**  
 Yes, it was developed in python so it needs it to run, version 3. You can install the latest version from [here](https://www.python.org/downloads/) or by using Windows Store.
-
-**- The app on Windows doesn't detect my device even though it's connected and USB debugging is enabled. What could be the issue?**  
-Windows most likely doesn't recognise your device in ADB mode. Install the universal ADB drivers from [here](http://dl.adbdriver.com/upload/adbdriver.zip), reboot your PC and try again.
 
 **- My phone reboots every 5 failed attempts**  
 We are aware of this and have implemented an automatic intentional reboot after 4 attempts.  
