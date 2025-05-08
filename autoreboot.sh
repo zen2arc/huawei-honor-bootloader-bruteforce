@@ -7,6 +7,6 @@
 #  else the bruteforce script could stop executing randomly
 while true
 do
-./adb wait-for-usb-device
-./adb reboot bootloader
+adb wait-for-usb-device
+adb reboot bootloader
 done
