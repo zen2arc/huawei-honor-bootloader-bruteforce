@@ -30,7 +30,7 @@ def bruteforceBootloader(increment):
     n=0
     while (unlock == False):
         print("Bruteforce is running...\nCurrently testing code "+str(algoOEMcode).zfill(16)+"\nProgress: "+str(round((algoOEMcode/10000000000000000)*100, 2))+"%")
-        output = subprocess.run("./fastboot oem unlock " + str(algoOEMcode).zfill(16), shell=True, stderr=subprocess.PIPE).stderr.decode('utf-8')
+        output = subprocess.run("fastboot oem unlock " + str(algoOEMcode).zfill(16), shell=True, stderr=subprocess.PIPE).stderr.decode('utf-8')
         print(output)
         output = output.lower()
         n+=1
@@ -44,8 +44,8 @@ def bruteforceBootloader(increment):
         if 'reboot' in output:
             print("Target device has bruteforce protection!")
             print("Waiting for reboot and trying again...")
-            os.system("./adb wait-for-device")
-            os.system("./adb reboot bootloader")
+            os.system("adb wait-for-device")
+            os.system("adb reboot bootloader")
             print("Device reboot requested, turning on reboot workaround.")
             autoreboot = True
         if failmsg in output:
@@ -66,13 +66,13 @@ def bruteforceBootloader(increment):
 
         if (n%autorebootcount==0 and autoreboot):
             print("Rebooting to prevent bootloader from rebooting...")
-            os.system('./fastboot reboot bootloader')
+            os.system('fastboot reboot bootloader')
 
         algoOEMcode += increment
 
         if (algoOEMcode > 10000000000000000):
             print("OEM Code not found!\n")
-            os.system("./fastboot reboot")
+            os.system("fastboot reboot")
             exit()
 
 def luhn_checksum(imei):
@@ -95,7 +95,7 @@ print('\n\n  (You must enable USB DEBUGGING and OEM UNLOCK in the developer opti
 print('  !!! All data will be erased !!! \n')
 #input(' Press enter to detect device..\n')
 
-os.system('./adb devices')
+os.system('adb devices')
 
 print("Please select \"Always allow from this computer\" in the adb dialog!")
 
@@ -113,12 +113,12 @@ while (checksum != 0):
 increment = int(math.sqrt(imei)*1024)
 if quickstart==False:
     input('Press enter to reboot your device...\n')
-os.system('./adb reboot bootloader')
+os.system('adb reboot bootloader')
 #input('Press enter when your device is ready... (This may take time, depending on your phone)\n')
 
 codeOEM = bruteforceBootloader(increment)
 
-os.system('./fastboot getvar unlocked')
+os.system('fastboot getvar unlocked')
 #os.system('fastboot reboot')
 
 print('\n\nDevice unlocked! OEM CODE: '+codeOEM+'\n')
