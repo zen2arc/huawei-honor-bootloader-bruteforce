@@ -11,7 +11,7 @@ It uses a bruteforce method, based on the IMEI identifier to generate unlocking 
 This will most likely only work on European versions, 
 because these only use numbers in the bootloader unlock code.
 
-Currently is in testing on the device (Russian region)
+Currently confirmed working on the device (Russian region)
 - Honor 7A DUA-L22
 
 ## Instructions
