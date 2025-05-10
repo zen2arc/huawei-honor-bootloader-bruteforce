@@ -1,4 +1,4 @@
-# Huawei & Honor OEM Unlock bruteforce Linux certified :D (HAS TO BE INSTALLED INTO AN EXISTING PLATFORM TOOLS FOLDER)
+# Huawei & Honor OEM Unlock bruteforce Linux certified :D
 
 ## Summary
 
